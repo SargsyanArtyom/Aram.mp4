@@ -54,7 +54,7 @@ var dinoArr = []
 var dinohunterArr = []
 
 function setup() {
-    frameRate(5);
+    frameRate(10);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
 
