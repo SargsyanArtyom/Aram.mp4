@@ -46,7 +46,7 @@ function generator(matLen, gr, grEat, pred, dino, dinohunter) {
 
 let side = 20;
 
-let matrix = generator(20, 40, 20, 4, 5, 4);
+let matrix = generator(25, 20, 25, 4, 5, 4);
 var grassArr = []
 var grassEaterArr = []
 var predatorArr = []
@@ -54,7 +54,7 @@ var dinoArr = []
 var dinohunterArr = []
 
 function setup() {
-    frameRate(10);
+    frameRate(5);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
 
