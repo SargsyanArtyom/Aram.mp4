@@ -1,4 +1,4 @@
-class LivingCreature {
+module.exports = class LivingCreature {
   constructor(x, y, index) {
     this.x = x;
     this.y = y;
@@ -29,11 +29,13 @@ class LivingCreature {
   }
 }
 
-class Grass extends LivingCreature {
+let LivingCreature = require('./LivingCreature')
+
+module.exports = class Grass extends LivingCreature {
   mul() {
     this.multiply++;
     var emptyCells = this.chooseCell(0);
-    var newCell = random(emptyCells);
+    var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
     if (newCell && this.multiply >= 9) {
       var newX = newCell[0];
@@ -47,7 +49,7 @@ class Grass extends LivingCreature {
   }
 }
 
-class GrassEater extends LivingCreature {
+module.exports = class GrassEater extends LivingCreature {
   constructor(x, y) {
     super(x, y);
     this.energy = 10;
@@ -73,7 +75,7 @@ class GrassEater extends LivingCreature {
   mul() {
     this.multiply++;
     var emptyCells = this.chooseCell(0);
-    var newCell = random(emptyCells);
+    var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
     if (newCell && this.multiply >= 15) {
       var newX = newCell[0];
@@ -88,7 +90,7 @@ class GrassEater extends LivingCreature {
   move() {
     this.energy--;
     var emptyCells = this.chooseCell(0);
-    var newCell = random(emptyCells);
+    var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
     if (this.energy > 0 && newCell) {
       var newX = newCell[0];
       var newY = newCell[1];
@@ -100,7 +102,7 @@ class GrassEater extends LivingCreature {
   }
   eat() {
     var emptyCells = this.chooseCell(1);
-    var newCell = random(emptyCells);
+    var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
     if (newCell) {
       this.energy++;
@@ -132,7 +134,9 @@ class GrassEater extends LivingCreature {
   }
 }
 
-class Predator extends LivingCreature {
+let LivingCreature = require('./LivingCreature')
+
+module.exports = class Predator extends LivingCreature {
   constructor(x, y) {
     super(x, y);
     this.energy = 14;
@@ -158,7 +162,7 @@ class Predator extends LivingCreature {
   mul() {
     this.multiply++;
     var emptyCells = this.chooseCell(0);
-    var newCell = random(emptyCells);
+    var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
     if (newCell && this.multiply >= 15) {
       var newX = newCell[0];
@@ -173,10 +177,10 @@ class Predator extends LivingCreature {
   move() {
     this.energy--;
     var emptyCells = this.chooseCell(1);
-    var newCell = random(emptyCells);
+    var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
     var emptyCells1 = this.chooseCell(0);
-    var newCell1 = random(emptyCells1);
+    var newCell1 = emptyCells[Math.floor(Math.random() * emptyCells.length)];
     if (this.energy > 0 && newCell) {
       var newX = newCell[0];
       var newY = newCell[1];
@@ -195,7 +199,7 @@ class Predator extends LivingCreature {
   }
   eat() {
     var emptyCells = this.chooseCell(2);
-    var newCell = random(emptyCells);
+    var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
     if (newCell) {
       this.energy += 4;
@@ -227,7 +231,9 @@ class Predator extends LivingCreature {
   }
 }
 
-class Dino extends LivingCreature {
+let LivingCreature = require('./LivingCreature')
+
+module.exports = class Dino extends LivingCreature {
   constructor(x, y) {
     super(x, y);
     this.energy = 18;
@@ -253,7 +259,7 @@ class Dino extends LivingCreature {
   mul() {
     this.multiply++;
     var emptyCells = this.chooseCell(0);
-    var newCell = random(emptyCells);
+    var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
     if (newCell && this.multiply >= 19) {
       var newX = newCell[0];
@@ -268,10 +274,10 @@ class Dino extends LivingCreature {
   move() {
     this.energy--;
     var emptyCells = this.chooseCell(1);
-    var newCell = random(emptyCells);
+    var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
     var emptyCells1 = this.chooseCell(0);
-    var newCell1 = random(emptyCells1);
+    var newCell1 = emptyCells[Math.floor(Math.random() * emptyCells.length)];
     if (this.energy > 0 && newCell) {
       var newX = newCell[0];
       var newY = newCell[1];
@@ -290,10 +296,10 @@ class Dino extends LivingCreature {
   }
   eat() {
     var emptyCells = this.chooseCell(2);
-    var newCell = random(emptyCells);
+    var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
     var emptyCells1 = this.chooseCell(3);
-    var newCell1 = random(emptyCells1);
+    var newCell1 = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
     if (newCell) {
       this.energy += 4;
@@ -340,7 +346,9 @@ class Dino extends LivingCreature {
   }
 }
 
-class DinoHunter extends LivingCreature {
+let LivingCreature = require('./LivingCreature')
+
+module.exports = class DinoHunter extends LivingCreature {
   constructor(x, y) {
     super(x, y);
     this.energy = 18;
@@ -366,7 +374,7 @@ class DinoHunter extends LivingCreature {
   mul() {
     this.multiply++;
     var emptyCells = this.chooseCell(0);
-    var newCell = random(emptyCells);
+    var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
     if (newCell && this.multiply >= 19) {
       var newX = newCell[0];
@@ -381,10 +389,10 @@ class DinoHunter extends LivingCreature {
   move() {
     this.energy--;
     var emptyCells = this.chooseCell(1);
-    var newCell = random(emptyCells);
+    var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
     var emptyCells1 = this.chooseCell(0);
-    var newCell1 = random(emptyCells1);
+    var newCell1 = emptyCells1[Math.floor(Math.random() * emptyCells.length)];
     if (this.energy > 0 && newCell) {
       var newX = newCell[0];
       var newY = newCell[1];
@@ -403,7 +411,7 @@ class DinoHunter extends LivingCreature {
   }
   eat() {
     var emptyCells = this.chooseCell(4);
-    var newCell = random(emptyCells);
+    var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
     if (newCell) {
       this.energy += 6;

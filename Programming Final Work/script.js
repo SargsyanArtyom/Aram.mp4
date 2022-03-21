@@ -81,7 +81,7 @@ function setup() {
         }
 
     }
-    
+
 }
 
 function draw() {
@@ -129,3 +129,4 @@ function draw() {
         dinohunterArr[i].eat()
     }
 }
+io.sockets.on('send matrix', matrix)
