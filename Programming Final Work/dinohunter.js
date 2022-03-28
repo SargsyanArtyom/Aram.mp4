@@ -5,7 +5,7 @@ let LivingCreature = require('./LivingCreature')
 module.exports = class DinoHunter extends LivingCreature {
   constructor(x, y) {
     super(x, y);
-    this.energy = 18;
+    this.energy = 14;
   }
   getNewCoordinates() {
     this.directions = [

@@ -28,7 +28,7 @@ module.exports = class Predator extends LivingCreature {
     var emptyCells = this.chooseCell(0);
     var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
-    if (newCell && this.multiply >= 15) {
+    if (newCell && this.multiply >= 12) {
       var newX = newCell[0];
       var newY = newCell[1];
       matrix[newY][newX] = 3;
