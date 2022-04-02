@@ -24,7 +24,7 @@ function nkar(matrix) {
             } else if (matrix[y][x] == 4) {
                 fill("Purple")
             } else if (matrix[y][x] == 5) {
-                fill("White")
+                fill("Black")
             }
 
             rect(x * side, y * side, side, side);
@@ -35,3 +35,22 @@ function nkar(matrix) {
 
   }
   socket.on("send matrix", nkar)
+
+  function Dropmeteorite() {
+    socket.emit("meteorite")
+}
+function addGrass() {
+    socket.emit("add grass")
+}
+function addGrassEater() {
+    socket.emit("add grasseater")
+}
+function addPredator() {
+  socket.emit("add predator")
+}
+function addDino() {
+  socket.emit("add dino")
+}
+function addDinoHunter() {
+  socket.emit("add dinohunter")
+}

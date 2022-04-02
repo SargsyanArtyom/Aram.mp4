@@ -92,7 +92,7 @@ function game() {
 
 setInterval(game, 100);
 
-function kill() {
+function Dropmeteorite() {
   grassArr = [];
   grassEaterArr = [];
   predatorArr = [];
@@ -136,7 +136,7 @@ function addPredator() {
     var x = Math.floor(Math.random() * matrix[0].length);
     var y = Math.floor(Math.random() * matrix.length);
     if (matrix[y][x] == 0) {
-      matrix[y][x] = 2;
+      matrix[y][x] = 3;
       predatorArr.push(new Predator(x, y, 2));
     }
   }
@@ -148,7 +148,7 @@ function addDino() {
     var x = Math.floor(Math.random() * matrix[0].length);
     var y = Math.floor(Math.random() * matrix.length);
     if (matrix[y][x] == 0) {
-      matrix[y][x] = 2;
+      matrix[y][x] = 4;
       dinoArr.push(new Dino(x, y, 2));
     }
   }
@@ -160,7 +160,7 @@ function addDinoHunter() {
     var x = Math.floor(Math.random() * matrix[0].length);
     var y = Math.floor(Math.random() * matrix.length);
     if (matrix[y][x] == 0) {
-      matrix[y][x] = 2;
+      matrix[y][x] = 5;
       dinohunterArr.push(new DinoHunter(x, y, 2));
     }
   }
@@ -170,9 +170,12 @@ function addDinoHunter() {
 io.on("connection", function (socket) {
   createObject();
 
-  socket.on("kill", kill);
+  socket.on("meteorite", Dropmeteorite);
   socket.on("add grass", addGrass);
-  socket.on("add grassEater", addGrassEater);
+  socket.on("add grasseater", addGrassEater);
+  socket.on("add predator", addPredator);
+  socket.on("add dino", addDino);
+  socket.on("add dinohunter", addDinoHunter);
 });
 
 var statistics = {};
@@ -180,6 +183,10 @@ var statistics = {};
 setInterval(function () {
   statistics.grass = grassArr.length;
   statistics.grassEater = grassEaterArr.length;
+  statistics.predator = predatorArr.length;
+  statistics.dino = dinoArr.length;
+  statistics.dinohunter = dinohunterArr.length;
+
   fs.writeFile("statistics.json", JSON.stringify(statistics), function () {
     console.log("send");
   });

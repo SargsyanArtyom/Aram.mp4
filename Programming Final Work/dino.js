@@ -28,7 +28,7 @@ module.exports = class Dino extends LivingCreature {
     var emptyCells = this.chooseCell(0);
     var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
-    if (newCell && this.multiply >= 19) {
+    if (newCell && this.multiply >= 16) {
       var newX = newCell[0];
       var newY = newCell[1];
       matrix[newY][newX] = 4;
@@ -40,26 +40,30 @@ module.exports = class Dino extends LivingCreature {
   }
   move() {
     this.energy--;
-    var emptyCells = this.chooseCell(1);
+    var emptyCells = this.chooseCell(0);
     var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
 
-    var emptyCells1 = this.chooseCell(0);
-    var newCell1 = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+    var emptyCells1 = this.chooseCell(1);
+    var newCell1 = emptyCells1[Math.floor(Math.random() * emptyCells.length)];
+
     if (this.energy > 0 && newCell) {
       var newX = newCell[0];
       var newY = newCell[1];
       matrix[newY][newX] = matrix[this.y][this.x];
-      matrix[this.y][this.x] = 1;
-      this.x = newX;
-      this.y = newY;
-    } else if (this.energy > 0 && newCell1) {
-      var newX = newCell1[0];
-      var newY = newCell1[1];
-      matrix[newY][newX] = matrix[this.y][this.x];
       matrix[this.y][this.x] = 0;
       this.x = newX;
       this.y = newY;
-    } else this.die();
+    }
+
+    else if (this.energy > 0 && newCell1 ) {
+      var newX = newCell1[0];
+      var newY = newCell1[1];
+      matrix[newY][newX] = matrix[this.y][this.x];
+      matrix[this.y][this.x] = 1;
+      this.x = newX;
+      this.y = newY;
+    }
+     else this.die();
   }
   eat() {
     var emptyCells = this.chooseCell(2);

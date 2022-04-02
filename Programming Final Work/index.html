@@ -1,7 +1,7 @@
 <html>
 
 <head>
-<h1 style="color:red; margin-left:45%;margin-top:1%;font-size: 50px;">Game Of Life</h1>
+<h1 style="color:black; margin-left:45%;margin-top:1%;font-size: 50px;">Game Of Life</h1>
 <script src="/socket.io/socket.io.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
   <script src="script.js"></script>
@@ -11,12 +11,12 @@
 
 <body>
   <div class="canvas" >
-  <button class="button">Add Grass</button>
-  <button class="button">Add GrassEater</button>
-  <button class="button">Add Predator</button>
-  <button class="button">Add Dino</button>
-  <button class="button">Add DinoHunter</button>
-  <button class="button">Meteorite</button>
+  <button class="button" onclick="addGrass()">Add Grass</button>
+  <button class="button" onclick="addGrassEater()">Add GrassEater</button>
+  <button class="button" onclick="addPredator()">Add Predator</button>
+  <button class="button" onclick="addDino()">Add Dino</button>
+  <button class="button" onclick="addDinoHunter()">Add DinoHunter</button>
+  <button class="button" onclick="Dropmeteorite()">Meteorite</button>
   </div>
  <main style="display: flex ; justify-content:center;
  ">
